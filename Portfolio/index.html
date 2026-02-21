@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hetvi Mehta | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=:wght@300;400inter;500;600;700&display=swap');
+
+        :root {
+            --bg: #e8e8e3;
+            /* Sophisticated Dull White/Stone */
+            --panel: #f7f5e6;
+            --accent: #000000;
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--accent);
+            letter-spacing: -0.02em;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Desktop App Lock */
+        @media (min-width: 1024px) {
+            body {
+                overflow: hidden;
+                height: 100vh;
+            }
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        h1,
+        h2,
+        h3,
+        .syne {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .nav-btn {
+            color: rgba(0, 0, 0, 0.3);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-btn.active {
+            color: var(--accent);
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 0.75rem;
+        }
+
+        #content-area {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Floating Cards Grid */
+        .float-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
+        }
+
+        .float-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 1:1 Image Ratio Strict */
+        .profile-img-container {
+            width: 100%;
+            aspect-ratio: 3 / 3 !important;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #000;
+        }
+
+        .section-label {
+            font-size: 0.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center p-4 md:p-8 lg:p-12 min-h-screen">
+
+    <div class="w-full max-w-7xl h-full flex flex-col lg:flex-row gap-6">
+
+        <!-- Sidebar: The Profile -->
+        <aside class="w-full lg:w-[300px] flex flex-col gap-6 shrink-0">
+            <div class="panel p-6 flex flex-col h-full">
+                <div class="profile-img-container mb-6">
+                    <img src="p2.jpeg" alt="Hetvi Mehta"
+                        class="w-full h-full object-cover grayscale brightness-90">
+                </div>
+
+                <div class="mb-8">
+                    <h1 class="text-2xl font-extrabold uppercase leading-none tracking-tighter mb-2">Hetvi Mehta</h1>
+                    <p class="text-[0.65rem] opacity-30 font-bold tracking-[0.25em] uppercase">Developer • Cybersec •
+                        Graphic Designer</p>
+                </div>
+
+                <div class="space-y-3 mb-10">
+                    <a href="mailto:mehtahetvi4818@gmail.com"
+                        class="block w-full text-center bg-black text-white py-4 rounded-xl text-[0.7rem] font-bold uppercase tracking-widest hover:opacity-80 transition-opacity">
+                        Connect
+                    </a>
+                    <button onclick="copyEmail()"
+                        class="w-full border-2 border-black/10 py-4 rounded-xl text-[0.7rem] font-bold uppercase tracking-widest hover:border-black transition-all">
+                        Copy Address
+                    </button>
+                </div>
+
+                <div class="mt-auto flex justify-between items-center opacity-20 pt-6 border-t border-black/5">
+                    <a href="https://indigobyhetvee.netlify.app/" target="_blank"
+                        class="hover:opacity-100 hover:text-black"><i class="fas fa-link text-lg"></i></a>
+                    <a href="https://github.com/Hetveemehta/hetvee-projects" class="hover:opacity-100 hover:text-black"><i class="fab fa-github text-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/hetvee-mehta" target="_blank" class="hover:opacity-100 hover:text-black"><i class="fab fa-linkedin text-lg"></i></a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 flex flex-col gap-6">
+
+            <!-- Floating Navigation -->
+            <nav class="panel p-4 flex justify-center items-center">
+                <div class="flex gap-4 md:gap-10">
+                    <button onclick="navigate('home')" class="nav-btn active">Index</button>
+                    <button onclick="navigate('experience')" class="nav-btn">Experience</button>
+                    <button onclick="navigate('works')" class="nav-btn">Works</button>
+                    <button onclick="navigate('skills')" class="nav-btn">Skills</button>
+                </div>
+            </nav>
+
+            <!-- Content Panel -->
+            <div class="panel flex-1 p-8 md:p-14 lg:p-20 overflow-hidden relative">
+                <div id="content-area" class="h-full overflow-y-auto custom-scroll pr-4">
+                    <!-- Default: Index -->
+                    <div id="view-home">
+                        <span class="section-label">01 / Introduction</span>
+                        <h2 class="text-5xl md:text-8xl font-black mb-12 leading-[0.85] tracking-tighter syne">
+                            Designing <br /><span class="italic font-light opacity-30">actually</span>
+                            <br />functioning.
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-black/5 pt-12 mt-12">
+                            <div class="space-y-4">
+                                <h4 class="text-[0.6rem] font-black uppercase tracking-widest opacity-20">Identity</h4>
+                                <p class="text-base opacity-50 leading-relaxed font-medium">
+                                    I am an IT student based in Ahmedabad, Gujarat. My work exists at the intersection
+                                    of high-end aesthetics and rigorous digital defense.
+                                </p>
+                            </div>
+                            <div class="bg-zinc-50 p-8 rounded-2xl border border-black/5">
+                                <h4 class="text-[0.6rem] font-black uppercase tracking-widest opacity-20 mb-4">Academic
+                                    Context</h4>
+                                <p class="text-lg font-bold syne mb-1">B.Tech — Information Technology</p>
+                                <p class="text-[0.7rem] opacity-40 uppercase font-black">JG University / 2025 - Present
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification -->
+    <div id="toast"
+        class="fixed bottom-10 right-10 bg-black text-white px-8 py-4 rounded-xl shadow-2xl opacity-0 transition-all duration-300 pointer-events-none text-[0.7rem] font-bold uppercase tracking-widest translate-y-4">
+        Copied to Clipboard
+    </div>
+
+    <script>
+        const contentData = {
+            home: `
+                <div class="animate-in">
+                    <span class="section-label">01 / Introduction</span>
+                    <h2 class="text-5xl md:text-8xl font-black mb-12 leading-[0.85] tracking-tighter syne">
+                        Designing <br/><span class="italic font-light opacity-30">actually</span> <br/>functioning.
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-black/5 pt-12 mt-12">
+                        <div class="space-y-4">
+                            <h4 class="text-[0.6rem] font-black uppercase tracking-widest opacity-20">Identity</h4>
+                            <p class="text-base opacity-50 leading-relaxed font-medium">
+                                I am an IT student based in Ahmedabad, Gujarat. My work exists at the intersection of high-end aesthetics and rigorous digital defense.
+                            </p>
+                        </div>
+                        <div class="bg-zinc-50 p-8 rounded-2xl border border-black/5">
+                            <h4 class="text-[0.6rem] font-black uppercase tracking-widest opacity-20 mb-4">Academic Context</h4>
+                            <p class="text-lg font-bold syne mb-1">B.Tech — Information Technology</p>
+                            <p class="text-[0.7rem] opacity-40 uppercase font-black">JG University / 2025 - Present</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            experience: `
+                <div class="animate-in">
+                    <span class="section-label">02 / Experience</span>
+                    <h2 class="text-3xl font-black mb-10 uppercase tracking-tighter syne">Career & Service</h2>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="float-card">
+                            <div class="flex justify-between items-start mb-6">
+                                <span class="text-[0.65rem] font-black opacity-20 uppercase tracking-widest">'24 Summer</span>
+                                <div class="w-2 h-2 bg-black rounded-full"></div>
+                            </div>
+                            <h3 class="text-lg font-bold uppercase mb-1 syne">Cyber Security</h3>
+                            <p class="text-[0.6rem] font-black opacity-30 mb-4 tracking-[0.2em]">INNOVATE INTERN</p>
+                            <p class="text-xs opacity-50 leading-relaxed">Engineered reconnaissance crawlers and Red Hat penetration labs.</p>
+                        </div>
+
+                        <div class="float-card bg-black text-white border-black shadow-xl">
+                            <div class="flex justify-between items-start mb-6">
+                                <span class="text-[0.65rem] font-black opacity-40 uppercase tracking-widest">'23 Autumn</span>
+                                <div class="w-2 h-2 bg-white rounded-full"></div>
+                            </div>
+                            <h3 class="text-lg font-bold uppercase mb-1 syne">Web Development</h3>
+                            <p class="text-[0.6rem] font-black opacity-40 mb-4 tracking-[0.2em]">MERITORIOUS INFOTECH</p>
+                            <p class="text-xs opacity-60 leading-relaxed">Constructed responsive interface modules and high-traffic platform clones.</p>
+                        </div>
+
+                        <div class="float-card bg-black text-white border-black shadow-xl">
+                            <div class="flex justify-between items-start mb-6">
+                                <span class="text-[0.65rem] font-black opacity-40 uppercase tracking-widest">Active</span>
+                                <div class="w-2 h-2 bg-white rounded-full"></div>
+                            </div>
+                            <h3 class="text-lg font-bold uppercase mb-1 syne">Bsides Vadodara</h3>
+                            <p class="text-[0.6rem] font-black opacity-40 mb-4 tracking-[0.2em]">MARKETING TEAM</p>
+                            <p class="text-xs opacity-60 leading-relaxed">Designing event visuals and managing comprehensive community outreach.</p>
+                        </div>
+
+                        <div class="float-card">
+                            <div class="flex justify-between items-start mb-6">
+                                <span class="text-[0.65rem] font-black opacity-20 uppercase tracking-widest">'24 - '25</span>
+                                <div class="w-2 h-2 bg-black rounded-full"></div>
+                            </div>
+                            <h3 class="text-lg font-bold uppercase mb-1 syne">The Hackers Meetup</h3>
+                            <p class="text-[0.6rem] font-black opacity-30 mb-4 tracking-[0.2em]">CREATIVE VOLUNTEER</p>
+                            <p class="text-xs opacity-50 leading-relaxed">Strategic coordination and digital asset development for security meetups.</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            works: `
+                <div class="animate-in">
+                    <span class="section-label">03 / Selected Works</span>
+                    <h2 class="text-3xl font-black mb-10 uppercase tracking-tighter syne">Projects</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2">
+                        <div class="float-card group">
+                            <a href="https://indigobyhetvee.netlify.app/" target="_blank" class="block">
+                            <h3 class="text-lg font-black mb-2 uppercase group-hover:italic transition-all syne">Indigo PhotoBooth</h3>
+                            </a>
+                            <p class="text-xs opacity-50 leading-relaxed mb-8">Integrated API systems for a seamless photo management app.</p>
+                            <div class="text-[0.55rem] font-black uppercase tracking-[0.2em] opacity-20 pt-4 border-t border-black/5">JS / API / UI</div>
+                        </div>
+                        <div class="float-card group">
+                            <a href="https://drive.google.com/drive/folders/1tcSA8BnvdpScTysgyFe1aelFAsNvW4wW?usp=sharing" target="_blank" class="block">
+                             <h3 class="text-lg font-black mb-2 uppercase group-hover:italic transition-all syne">URL Shorten</h3>
+                            </a>
+                            <p class="text-xs opacity-50 leading-relaxed mb-8">Efficient link compression logic with simplified UX flow.</p>
+                            <div class="text-[0.55rem] font-black uppercase tracking-[0.2em] opacity-20 pt-4 border-t border-black/5">Logic / ARCH</div>
+                        </div>
+                        <div class="float-card group">
+                            <a href="https://uiofnetfliix.netlify.app/" target="_blank" class="block">
+                            <h3 class="text-lg font-black mb-2 uppercase group-hover:italic transition-all syne">Netflix UI</h3>
+                            </a>
+                            <p class="text-xs opacity-50 leading-relaxed mb-8">Structural replica of complex streaming platform layouts.</p>
+                            <div class="text-[0.55rem] font-black uppercase tracking-[0.2em] opacity-20 pt-4 border-t border-black/5">Layout / CSS</div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            skills: `
+                <div class="animate-in">
+                    <span class="section-label">04 / Stack</span>
+                    <h2 class="text-3xl font-black mb-12 uppercase tracking-tighter syne">The Toolkit</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <div class="space-y-10">
+                            <h4 class="text-[0.6rem] font-black uppercase tracking-[0.4em] opacity-20">Development</h4>
+                            <div class="space-y-4">
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">PYTHON</div>
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">JAVASCRIPT</div>
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">HTML / CSS</div>
+                            </div>
+                        </div>
+                        <div class="space-y-10">
+                            <h4 class="text-[0.6rem] font-black uppercase tracking-[0.4em] opacity-20">Security</h4>
+                            <div class="space-y-4">
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">RED HAT LINUX</div>
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">PENTESTING</div>
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">GIT HUB</div>
+                            </div>
+                        </div>
+                        <div class="space-y-10">
+                            <h4 class="text-[0.6rem] font-black uppercase tracking-[0.4em] opacity-20">Design</h4>
+                            <div class="space-y-4">
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">FIGMA</div>
+                                <div class="text-md font-bold syne border-b-2 border-black/5 pb-2">CANVA</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-20 p-10 bg-black text-white rounded-[2rem] flex items-center justify-between">
+                        <p class="text-xl italic font-light syne opacity-80">"Building code that breaks boundaries."</p>
+                        <span class="text-[0.5rem] font-black uppercase opacity-40">hetvi.m // 2026</span>
+                    </div>
+                </div>
+            `
+        };
+
+        function navigate(page) {
+            const contentArea = document.getElementById('content-area');
+            const btns = document.querySelectorAll('.nav-btn');
+
+            btns.forEach(btn => {
+                const label = btn.innerText.toLowerCase();
+                if (label === page || (page === 'home' && label === 'index')) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            contentArea.classList.add('fade-out');
+
+            setTimeout(() => {
+                contentArea.innerHTML = contentData[page];
+                contentArea.classList.remove('fade-out');
+                contentArea.scrollTop = 0;
+            }, 300);
+        }
+
+        function copyEmail() {
+            const email = "mehtahetvi4818@gmail.com";
+            const el = document.createElement('textarea');
+            el.value = email;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(1rem)';
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
